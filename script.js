@@ -443,16 +443,22 @@ movements.sort((a, b) => b - a);
 // Empty Arrays with Fill method
 const x = new Array(7);
 console.log(x);
-x.fill(2, 2)
+x.fill(2, 2);
 console.log(x);
 
-const y = Array.from({ length: 7}, () => 1)
+const y = Array.from({ length: 7 }, () => 1);
 
-const z = Array.from({ length: 7}, (_, i) => i + 1)
-
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
 
 labelBalance.addEventListener('click', function () {
   const movementsUI = Array.from(
     document.querySelectorAll('.movements__value')
-  )
-})
+  );
+});
+
+const bankDepositSum = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov > 0)
+  .reduce((sum, cur) => sum + cur, 0);
+
+console.log(bankDepositSum);
